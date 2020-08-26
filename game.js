@@ -38,5 +38,9 @@ function update() {
 }
 
 function draw() {
+  // Remove all previous pieces of
+  // snake on draw - clear everything
+  // in the view
+  gameBoard.innerHTML= '';
   drawSnake(gameBoard);
 }
