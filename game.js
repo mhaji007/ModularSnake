@@ -1,10 +1,13 @@
+import {update as updateSnake, draw as drawSnake, SNAKE_SPEED} from './snake.js';
+
+
 // Set up a game loop - game loop is a function that repeats
 // over and over again on a set interval so render can be
 // updated constantly
 
 let lastRenderTime = 0;
 
-const SNAKE_SPEED = 2;
+
 
 function main(currentTime) {
   // request frame to animate game
@@ -20,7 +23,18 @@ function main(currentTime) {
   console.log('Render');
   lastRenderTime = currentTime;
 
+  update();
+  draw();
+
 }
 
 // start loop for the first time
 window.requestAnimationFrame(main);
+
+function update() {
+  updateSnake();
+}
+
+function draw() {
+  drawSnake();
+}
