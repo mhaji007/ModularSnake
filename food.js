@@ -9,7 +9,7 @@ export function update() {
   // check whether the food is on snake
   if (onSnake(food)) {
     expandSnake(EXPANSION_RATE);
-    food = {x:20, y:10};
+    food = {x:Math.floor(Math.random(21))+1, y:Math.floor(Math.random(21))+1};
   }
 
 }
