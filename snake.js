@@ -1,12 +1,15 @@
 import {getInputDirection} from './input.js';
 
-export const SNAKE_SPEED = 2;
+export const SNAKE_SPEED = 5;
 // Snake body is made of segments
 // which in turn is made of
 // coordinates on the grid system
 const snakeBody = [
   {x:11, y:11}, // middle of the grid
 ]
+
+
+let newSegments = 0; // By default snake is not growing
 
 export function update() {
 
@@ -34,4 +37,23 @@ export function draw(gamBoard) {
     gamBoard.appendChild(snakeElement);
 
   });
+}
+
+export function expandSnake(amount) {
+  newSegments += amount;
+}
+
+
+export function onSnake(position) {
+  // if any segment of snake has
+  // the same position as food
+  return snakeBody.some(segment => {
+    return equalPositions(segment, position)
+  })
+
+}
+
+function equalPositions(pos1, pos2) {
+  return pos1.x === pos2.x && pos1.y === pos2.y
+
 }
