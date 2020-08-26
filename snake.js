@@ -1,21 +1,28 @@
+import {getInputDirection} from './input.js';
+
 export const SNAKE_SPEED = 2;
+// Snake body is made of segments
+// which in turn is made of
+// coordinates on the grid system
 const snakeBody = [
-  {x:10, y:11},
-  {x:11, y:11},
-  {x:12, y:11},
-  {x:13, y:11},
-  {x:14, y:11},
+  {x:11, y:11}, // middle of the grid
 ]
 
 export function update() {
+
+  const inputDirection = getInputDirection();
+
   for (let i = snakeBody.length - 2; i >=0; i--) {
     // shifting every piece forward a positon
     // to where the parent element was
     snakeBody[i+1] = {...snakeBody[i]}
   }
 
-  snakeBody[0].x +=0;
-  snakeBody[0].y +=1; //as Y increases we move down
+  // snakeBody[0].x +=0;
+  // snakeBody[0].y +=1; // Y increases as we move down
+
+  snakeBody[0].x += inputDirection.x
+  snakeBody[0].y += inputDirection.y // Y increases as we move down
 }
 
 export function draw(gamBoard) {
