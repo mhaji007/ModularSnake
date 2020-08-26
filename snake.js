@@ -46,12 +46,27 @@ export function expandSnake(amount) {
 }
 
 
-export function onSnake(position) {
+export function onSnake(position, {ignoreHead = false} = {}) {
   // if any segment of snake has
   // the same position as food
-  return snakeBody.some(segment => {
-    return equalPositions(segment, position)
+  return snakeBody.some((segment, index) => {
+    if (ignoreHead && index === 0) return false;
+    return equalPositions(segment, position);
   })
+
+}
+
+export function getSnakeHead() {
+
+  return snakeBody[0];
+
+}
+
+// Check the head against every other position on the snake
+export function snakeIntersection() {
+// Without passing the ignoreHead parameter the Onsnake
+// compares head with head and always returns true
+  return onSnake(snakeBody[0], {ignoreHead: true})
 
 }
 
