@@ -1,5 +1,5 @@
 import {update as updateSnake, draw as drawSnake, SNAKE_SPEED} from './snake.js';
-
+import {update as updateFood, draw as drawFood} from './food.js';
 
 // Set up a game loop - game loop is a function that repeats
 // over and over again on a set interval so render can be
@@ -35,6 +35,7 @@ window.requestAnimationFrame(main);
 
 function update() {
   updateSnake();
+  updateFood();
 }
 
 function draw() {
@@ -43,4 +44,5 @@ function draw() {
   // in the view
   gameBoard.innerHTML= '';
   drawSnake(gameBoard);
+  drawFood(gameBoard);
 }
